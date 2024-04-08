@@ -11,6 +11,10 @@ background-repeat: no-repeat;
 background-size: cover;
 background-position: center;
 background-clip: border-box;
+@media screen and (max-width:540px) {
+  display: none;
+  
+}
 `
 
 

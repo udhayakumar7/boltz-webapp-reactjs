@@ -278,8 +278,8 @@ color: #2a2a2a;
 .flex-no-wrap::-webkit-scrollbar-thumb
 {
 	border-radius: 10px;
-	-webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.036);
-	background-color: #5555559b;
+	-webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.016);
+	background-color: #5555555b;
 }
 
 .flex-no-wrap{
@@ -731,11 +731,25 @@ background: #fff !important;
 .detail_section{
   margin-top: 30px;
 }
+.main_section{
+  margin: 50px auto;
+}
+.section_title{
+  margin-bottom: 30px;
+}
+.main_section .col-6{
+  padding: 0px 8px !important;
+}
 }
 
 @media screen and (max-width:540px) {
+  .navbar{
+    position: sticky !important;
+    top: 0 !important;
+  }
   .content{
     align-items: center;
+    padding: 40px 0px;
   }
   .section_title{
     text-align: center;

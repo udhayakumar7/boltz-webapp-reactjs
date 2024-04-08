@@ -14,7 +14,8 @@ background-size: cover;
 background-position: center;
 background-clip: border-box;
 @media screen and (max-width:540px) {
-  height: 500px !important;
+  height: 300px !important;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.496), rgba(0, 0, 0, 0.479)), url(${props => props.banner});
 
 }
 @media screen and (max-width:1380px) {
@@ -33,6 +34,7 @@ const Content = styled.div `
 
     @media screen and (max-width:540px) {
     align-items: center;
+    padding: 0px;
 
 }
 
@@ -53,8 +55,12 @@ const HeadingOne = styled.h2 `
     @media screen and (max-width:1024px) {
 
       line-height: normal;
+      margin-bottom: 8px;
       
     }
+    @media screen and (max-width:540px) {
+      font-size: 32px;
+}
 
 
 `
@@ -63,6 +69,15 @@ const HeadingTwo = styled.h3 `
     font-weight: 500;
     color: #fff;
     margin-bottom: 16px;
+    @media screen and (max-width:1024px) {
+   margin-bottom: 8px;
+
+}
+@media screen and (max-width:540px) {
+ 
+    font-size: 26px;
+   
+}
     
 `
 const HeadingThree = styled.h4 `
@@ -70,6 +85,11 @@ const HeadingThree = styled.h4 `
     font-weight: 400;
     color: #fff;
     margin-bottom: 0px;
+    @media screen and (max-width:540px) {
+ 
+    font-size: 14px;
+
+}
 `
 const Button = styled.button `
     display: inline-block;
@@ -99,6 +119,11 @@ const Button = styled.button `
       width: 160px;
       font-size: 16px;
 
+}
+@media screen and (max-width:540px) {
+  width: 140px;
+    font-size: 14px;
+    margin-top: 12px;
 }
 `
 
@@ -142,7 +167,7 @@ const Banner = () => {
         <BackGroundImage banner={BANNER_6}>
             <Container className='h-100'>
             <Content>
-                <HeadingOne>UP 75% OFF </HeadingOne>
+                <HeadingOne>UP TO 75% OFF </HeadingOne>
                 <HeadingTwo>Wireless Headphones</HeadingTwo>
                 <HeadingThree>Starting from <span>₹999</span></HeadingThree>
                 <Button>Shop Products </Button>

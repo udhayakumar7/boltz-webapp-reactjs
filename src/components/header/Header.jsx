@@ -99,7 +99,7 @@ const Header = () => {
           </Form>
           <Nav className=" my-2 my-lg-0 align-items-center">
             <NavLink to="/">Home</NavLink>
-            <NavLink to="/true-wireless">True Wirless</NavLink>
+            <NavLink to="/true">True Wirless</NavLink>
             <NavLink to="/neck-band">Neck Bands</NavLink>
             <NavLink to="/wired">Wired</NavLink>
 

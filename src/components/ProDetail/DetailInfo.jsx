@@ -72,7 +72,7 @@ const DetailInfo = () => {
                 <div className="product_details_full">
                   <div className="ratings_reviews_detail">
                     {renderStars(item?.attributes?.rattings)} &nbsp;|
-                    <h6>{getonePro?.reviews} reviews</h6>
+                    <h6>{item?.attributes?.reviews} reviews</h6>
                   </div>
                   <h2>{item?.attributes?.title}</h2>
                   <h4>{item?.attributes?.descriptions}</h4>
@@ -89,9 +89,13 @@ const DetailInfo = () => {
                   </div>
                   <div className="features">
                     <ul>
+                      {
+                        !item?.attributes?.playback ? "" :
+                     
                       <li>
                         <FiCheckCircle /> {item?.attributes?.playback}hrs playback time
                       </li>
+                       }
                       <li>
                         <FiCheckCircle /> 13mm drivers
                       </li>
