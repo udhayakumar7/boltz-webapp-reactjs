@@ -35,7 +35,7 @@ const LastestProduts = () => {
 
             return(
               
-             <Col lg={3} key={item?.id} >
+             <Col xs={6} sm={6} lg={3} key={item?.id} >
               <ProductCard 
              dataImage = {item?.attributes?.image?.data?.attributes?.url} 
              title={item?.attributes?.title} 
@@ -44,6 +44,7 @@ const LastestProduts = () => {
              reviews = {item?.attributes?.reviews}
              playback = {item?.attributes?.playback}
              IsNew ={item?.attributes?.IsNew}
+             isid ={item?.id}
              />
              </Col>
             

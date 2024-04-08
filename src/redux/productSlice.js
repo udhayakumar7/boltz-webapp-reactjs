@@ -49,6 +49,18 @@ export const  getNewProducts = createAsyncThunk('product/getNew', async()=>{
 
     }
    })
+   export const  getSingle = createAsyncThunk('product/getSingle', async({productId})=>{
+
+    try{
+        const response = await  axiosInstance.get(`/products?populate=*&filters[id][$eq]=${productId}`);
+        console.log(response.data)
+        return response.data
+    }
+    catch(error) {
+        throw(error)
+
+    }
+   })
 
    
 
@@ -59,6 +71,7 @@ const productSlice = createSlice({
         twtproducts:[],
         neckbands:[],
         wired:[],
+        single:[],
         loading:false,
         error:null
     },
@@ -105,6 +118,17 @@ const productSlice = createSlice({
             state.wired = action.payload
         })
         .addCase(getWiredProducts.rejected, (state, action)=>{
+            state.loading = false
+            state.error = action.payload
+        })
+        .addCase(getSingle.pending, (state)=>{
+            state.loading = true
+        })
+        .addCase(getSingle.fulfilled, (state, action)=>{
+            state.loading = false
+            state.single = action.payload
+        })
+        .addCase(getSingle.rejected, (state, action)=>{
             state.loading = false
             state.error = action.payload
         })

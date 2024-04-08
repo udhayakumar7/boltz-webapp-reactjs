@@ -24,7 +24,7 @@ const Neckbands = () => {
   
   
     return (
-        <div className='main_section'>
+        <div className='main_section' id="neck">
         <Container>
         <h2 className='section_title'>Neck Bands</h2>
   
@@ -34,7 +34,7 @@ const Neckbands = () => {
   
               return(
                 
-               <Col lg={3} key={i} >
+               <Col xs={6} sm={6} lg={3} key={item?.id} >
                 <ProductCard 
                dataImage = {item?.attributes?.image?.data?.attributes?.url} 
                title={item?.attributes?.title} 
@@ -43,6 +43,7 @@ const Neckbands = () => {
                reviews = {item?.attributes?.reviews}
                playback = {item?.attributes?.playback}
                IsNew ={item?.attributes?.IsNew}
+               isid ={item?.id}
                />
                </Col>
               

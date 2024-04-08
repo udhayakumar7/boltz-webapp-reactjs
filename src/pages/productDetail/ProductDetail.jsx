@@ -1,9 +1,17 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
+import DetailBanner from "../../components/detailBanner/DetailBanner";
+import DetailInfo from "../../components/ProDetail/DetailInfo";
+
 
 const ProductDetail = () => {
-  return (
-    <div>ProductDetail</div>
-  )
-}
+ 
 
-export default ProductDetail
+  return (
+    <>
+      <DetailBanner />
+      <DetailInfo />
+    </>
+  );
+};
+
+export default ProductDetail;

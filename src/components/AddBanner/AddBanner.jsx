@@ -15,7 +15,18 @@ const AddBanner = () => {
     background-position: top center;
     background-clip: border-box;
     background: #f2f2f2;
-
+    @media screen and (max-width:540px) {
+      height: 100%;
+      
+    }
+    @media screen and (min-width: 991px) and (max-width: 1056px){
+      height: 100%;
+      
+    }
+    /* @media screen and (min-width: 1057px) and (max-width: 1380px){
+      height: 225px;
+      
+    } */
    
   `
   const Button = styled.button `
@@ -32,6 +43,14 @@ const AddBanner = () => {
     font-weight: 600;
     margin-top: 10px;
     transition: 0.24s all ease-in-out;
+    @media screen and (max-width:540px) {
+      font-size: 15px;
+      width: 125px;
+      padding: 3px 16px;
+      margin-top: 5px;
+
+      
+    }
   `
 
 

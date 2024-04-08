@@ -6,4 +6,5 @@ export const BANNER_5 = require('./images/banner_5.jpg')
 export const BANNER_6 = require('./images/banner_6.jpg');
 export const ADD_BANNER_1 = require('./images/addBanner.jpg')
 export const ADD_BANNER_IMG = require('./images/banner_img.png');
-export const PLAYSTORE = require('./images/playstroe.png')
+export const PLAYSTORE = require('./images/playstroe.png');
+export const LOGIN = require('./images/login.png')

@@ -14,10 +14,10 @@ background-size: cover;
 background-position: center;
 background-clip: border-box;
 @media screen and (max-width:540px) {
-  height: 450px !important;
+  height: 500px !important;
 
 }
-@media screen and (max-width:1056px) {
+@media screen and (max-width:1380px) {
   height: 550px;
 
 }
@@ -30,6 +30,11 @@ const Content = styled.div `
     justify-content: center;
     flex-direction: column;
     padding-top: 40px;
+
+    @media screen and (max-width:540px) {
+    align-items: center;
+
+}
 
     @media screen and (max-width:820px) {
     width: 100%;

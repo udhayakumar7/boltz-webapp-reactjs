@@ -5,7 +5,9 @@ import Row from 'react-bootstrap/esm/Row'
 
 import styled from 'styled-components'
 import { PLAYSTORE } from '../../assets'
-
+import { FaFacebook } from "react-icons/fa";
+import { IoLogoInstagram } from "react-icons/io5";
+import { FaXTwitter } from "react-icons/fa6";
 const FooterSection = styled.div `
 width: 100%;
 height: 100%;
@@ -27,6 +29,11 @@ const Footer = () => {
              <p>United States - 90075</p>
              <p className='mt-3'>thunderboltz@gmail.com</p>
              <p className='mt-3'>925-444-7335</p>
+             <div className='mt-4'>
+              <FaFacebook  fontSize={22} color='#fff'/>
+              <IoLogoInstagram className='mx-2' fontSize={22} color='#fff' />
+              <FaXTwitter fontSize={22} color='#fff' />
+             </div>
 
 
            </div>

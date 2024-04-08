@@ -24,7 +24,7 @@ const Wired = () => {
   
   
     return (
-        <div className='main_section'>
+        <div className='main_section'  id="wired">
         <Container>
         <h2 className='section_title'>Wired Headphones</h2>
   
@@ -34,7 +34,7 @@ const Wired = () => {
   
               return(
                 
-               <Col lg={3} key={i} >
+               <Col xs={6} sm={6} lg={3} key={item?.id} >
                 <ProductCard 
                dataImage = {item?.attributes?.image?.data?.attributes?.url} 
                title={item?.attributes?.title} 
@@ -44,6 +44,7 @@ const Wired = () => {
                playback = {item?.attributes?.playback}
                IsNew ={item?.attributes?.IsNew}
                wired= {true}
+               isid ={item?.id}
                />
                </Col>
               
