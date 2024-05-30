@@ -6,13 +6,15 @@ import {useNavigate} from 'react-router-dom'
 import { selectUser } from '../../redux/authuserSlice';
 import { useSelector, useDispatch } from "react-redux";
 import { openModal } from '../../redux/loginmodelSlice';
+import { addtoCart } from '../../redux/cartSlice';
+import toast, { Toaster } from 'react-hot-toast';
 
 const ProductCard = (props) => {
 
   const user = useSelector(selectUser); 
   const dispatch = useDispatch()
 
-  const {title, dataImage, price, rattings, reviews, playback, IsNew, wired, isid} = props;
+  const {title, dataImage, price, rattings, reviews, playback, IsNew, wired, isid, item} = props;
 
   const navigate = useNavigate()
 
@@ -28,14 +30,17 @@ const ProductCard = (props) => {
     return stars;
   };
  
-  const gotoCart = (id) =>{
+  const gotoCart = (item) =>{
 
     if(!user){
       dispatch(openModal());
     }
     else{
-      navigate(`/products/${id}`)
-      console.log(id)
+      toast.success('Product added to cart', {
+        position: 'top-right',
+      });
+      dispatch(addtoCart({...item, quantity: 1}))
+    
     }
 
 
@@ -59,6 +64,9 @@ const ProductCard = (props) => {
     
   return (
 
+    <>
+<Toaster />
+
     <div className='product_card'>
         <img  onClick={()=>gotodetail(isid)} src={`${dataImage}`} alt='' />
         {
@@ -81,12 +89,12 @@ const ProductCard = (props) => {
         {renderStars()}
         <span className='reviews_count'>{reviews} reviews</span>
         </div>
-        <button  className='add_cart_button' onClick={()=>gotoCart(isid)}>Add to Cart</button>
+        <button  className='add_cart_button' onClick={()=>gotoCart(item)}>Add to Cart</button>
         </div>
         
-
+   
     </div>
-
+    </>
   )
 }
 
@@ -98,6 +106,7 @@ ProductCard.prototype ={
   reviews: PropTypes.any,
   playback: PropTypes.any,
   IsNew: PropTypes.any,
+  item:PropTypes.any
 }
 
 export default ProductCard

@@ -44,6 +44,7 @@ const Neckbands = () => {
                playback = {item?.attributes?.playback}
                IsNew ={item?.attributes?.IsNew}
                isid ={item?.id}
+               item = {item}
                />
                </Col>
               

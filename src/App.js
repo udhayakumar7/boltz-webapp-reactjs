@@ -8,6 +8,9 @@ import Footer from './components/footer/Footer';
 import Header from './components/header/Header';
 // css 
 import './App.css';
+import ProductView from './components/Product-view/ProductView';
+import Cart from './pages/cart/Cart';
+import ProductList from './pages/product-list/ProductList';
 
 
 
@@ -27,8 +30,12 @@ const router = createBrowserRouter([
      element : <Layout />,
       children : [
         { path : '/', element : <Home />}, 
-        { path : '/products', element : <Product />},
+        { path : '/products/wire-less', element : <ProductList />},
+        { path : '/products/neck-bands', element : <ProductList />},
+        { path : '/products/wired', element : <ProductList />},
         { path : '/products/:id', element : <ProductDetail />}, 
+        { path : '/products/360-view/:name', element : <ProductView />}, 
+        { path : '/cart', element : <Cart />}, 
         { path : '*', element : <div>404 error</div>}, 
       ]
   }

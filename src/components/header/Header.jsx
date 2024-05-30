@@ -4,7 +4,7 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { AiFillThunderbolt } from "react-icons/ai";
 import { RiShoppingCartFill } from "react-icons/ri";
 import { FaUserLarge } from "react-icons/fa6";
@@ -17,12 +17,14 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../../firebase";
 import Dropdown from "react-bootstrap/Dropdown";
 
-
 const Header = () => {
   const [isscroll, setIsscroll] = useState(false);
 
+  const totalQuanty = useSelector((state) => state?.cart?.cartQuanty);
+
   const dispatch = useDispatch();
-  const location = useLocation()
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleOpenModal = () => {
     dispatch(openModal());
@@ -30,12 +32,12 @@ const Header = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-    console.log(location.pathname)
+    console.log(location.pathname);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  });
+  }, []);
 
   const handleScroll = () => {
     if (window.scrollY > 80) {
@@ -80,7 +82,6 @@ const Header = () => {
           ? `bg-body-tertiary navbar scrolled`
           : `bg-body-tertiary navbar`
       }
-     
     >
       <Container>
         <NavLink className="logo" to="/">
@@ -99,20 +100,25 @@ const Header = () => {
           </Form>
           <Nav className=" my-2 my-lg-0 align-items-center">
             <NavLink to="/">Home</NavLink>
-            <NavLink to="/true">True Wirless</NavLink>
-            <NavLink to="/neck-band">Neck Bands</NavLink>
-            <NavLink to="/wired">Wired</NavLink>
+            <NavLink to="/products/wire-less" state={{ name: "fun" }}>
+              True Wirless
+            </NavLink>
+            <NavLink to="/products/neck-bands">Neck Bands</NavLink>
+            <NavLink to="/products/wired">Wired</NavLink>
+            {user?.email ? (
+              <NavLink className={"user_acc"} to="/cart">
+                <RiShoppingCartFill
+                  style={{ fontSize: "18px,", margin: "0px 4px" }}
+                />
+                Cart
+                <span className="cart_badge">
+                  {totalQuanty > 10 ? "" : totalQuanty}
+                </span>
+              </NavLink>
+            ) : (
+              ""
+            )}
 
-            {
-              user?.email ? 
-               <NavLink className={"user_acc"} to="/cart">
-               <RiShoppingCartFill
-                 style={{ fontSize: "18px,", margin: "0px 4px" }}
-               />{" "}
-               Cart
-             </NavLink> : ""
-            }
-            
             {/* <NavLink className={"user_acc"} to="/cart"><FaUserLarge style={{fontSize:"16px,",margin:"0px 7px"}}  />Kumar</NavLink> */}
 
             {user?.email ? (
@@ -130,7 +136,6 @@ const Header = () => {
                 </Dropdown.Menu>
               </Dropdown>
             ) : (
-              
               <button onClick={handleOpenModal} className={"login_button"}>
                 Login
               </button>

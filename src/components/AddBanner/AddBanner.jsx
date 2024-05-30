@@ -15,10 +15,11 @@ const AddBanner = () => {
     background-position: top center;
     background-clip: border-box;
     background: #f2f2f2;
-    @media screen and (max-width:540px) {
-      height: 100%;
+    @media screen and (max-width:991px) {
+      height: 100% !important;
       
     }
+    
     @media screen and (min-width: 991px) and (max-width: 1056px){
       height: 100%;
       

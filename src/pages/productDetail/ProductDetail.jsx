@@ -3,13 +3,15 @@ import DetailBanner from "../../components/detailBanner/DetailBanner";
 import DetailInfo from "../../components/ProDetail/DetailInfo";
 
 
+
 const ProductDetail = () => {
  
 
   return (
     <>
-      <DetailBanner />
+      
       <DetailInfo />
+      
     </>
   );
 };

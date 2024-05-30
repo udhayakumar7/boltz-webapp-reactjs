@@ -45,6 +45,7 @@ const Wired = () => {
                IsNew ={item?.attributes?.IsNew}
                wired= {true}
                isid ={item?.id}
+               item = {item}
                />
                </Col>
               
