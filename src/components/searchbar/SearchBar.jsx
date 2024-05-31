@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Form } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 
-const SearchBar = () => {
+const SearchBar = ({setShow}) => {
 
     const navigate = useNavigate()
 
@@ -25,6 +25,7 @@ const SearchBar = () => {
             navigate(`/search?query=${trimedValue}`);
             document.querySelector('input').value=''
             setSearch('')
+            setShow(false)
 
         } else{
 

@@ -17,9 +17,14 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../../firebase";
 import Dropdown from "react-bootstrap/Dropdown";
 import SearchBar from "../searchbar/SearchBar";
+import { Offcanvas } from "react-bootstrap";
 
 const Header = () => {
   const [isscroll, setIsscroll] = useState(false);
+  const [show, setShow] = useState(false)
+
+  const handleShow = ( ) => setShow(true)
+  const handleClose = () => setShow(false)
 
   const totalQuanty = useSelector((state) => state?.cart?.cartQuanty);
 
@@ -89,18 +94,37 @@ const Header = () => {
           <AiFillThunderbolt />
           <span>BOLTZ</span>
         </NavLink>
-        <Navbar.Toggle aria-controls="navbarScroll" />
-        <Navbar.Collapse id="navbarScroll">
-         <SearchBar />
+        <Navbar.Toggle aria-controls="offcanvasNavbar-expand-lg"  onClick={handleShow}/>
+
+        <Navbar.Offcanvas
+          id="offcanvasNavbar-expand-lg"
+          aria-labelledby="offcanvasNavbarLabel-expand-lg"
+          placement="end"
+          show={show}
+          onHide={handleClose}
+        >
+    <Offcanvas.Header closeButton>
+    <Offcanvas.Title id="offcanvasNavbarLabel-expand-lg">
+    <NavLink className="logo" to="/" onClick={handleClose}>
+          <AiFillThunderbolt />
+          <span>BOLTZ</span>
+        </NavLink>
+      
+</Offcanvas.Title>
+
+    </Offcanvas.Header>
+    <Offcanvas.Body> 
+
+    <SearchBar setShow={setShow} />
           <Nav className=" my-2 my-lg-0 align-items-center">
             <NavLink to="/">Home</NavLink>
-            <NavLink to="/products/wire-less" state={{ name: "fun" }}>
+            <NavLink to="/products/wire-less"  onClick={handleClose}>
               True Wirless
             </NavLink>
-            <NavLink to="/products/neck-bands">Neck Bands</NavLink>
-            <NavLink to="/products/wired">Wired</NavLink>
+            <NavLink to="/products/neck-bands" onClick={handleClose}>Neck Bands</NavLink>
+            <NavLink to="/products/wired" onClick={handleClose}>Wired</NavLink>
             {user?.email ? (
-              <NavLink className={"user_acc"} to="/cart">
+              <NavLink className={"user_acc"} to="/cart" onClick={handleClose}>
                 <RiShoppingCartFill
                   style={{ fontSize: "18px,", margin: "0px 4px" }}
                 />
@@ -136,7 +160,13 @@ const Header = () => {
               </button>
             )}
           </Nav>
-        </Navbar.Collapse>
+    </Offcanvas.Body>
+
+
+
+        </Navbar.Offcanvas>
+
+       
       </Container>
 
       <Login />

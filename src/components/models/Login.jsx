@@ -108,6 +108,7 @@ const Login = () => {
                 >
                   <Form.Control
                     type="text"
+                    autoComplete='off'
                     placeholder="email"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -124,6 +125,7 @@ const Login = () => {
                   label="Password *"
                   id="password"
                   name="password"
+                  autoComplete='off'
                 >
                   <Form.Control
                     type="password"
