@@ -4,12 +4,14 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import PAYMENT from '../../assets/images/footer-pay.png';
 import PAYMENT_1 from '../../assets/images/footer-pay-1.png'
 import { useSelector, useDispatch  } from "react-redux";
-import { decreaseItemQuantity, increaseItemQuantity, removeItem } from "../../redux/cartSlice";
+import { decreaseItemQuantity, increaseItemQuantity, removeItem, remvoeAll } from "../../redux/cartSlice";
+import {  CheckoutHelper } from "../../helpers/checkoutHelper";
+import { selectUser } from "../../redux/authuserSlice";
 
 const Cart = () => {
 
   const dispatch = useDispatch();
-
+  const user = useSelector(selectUser);
   const cartItems = useSelector((state)=> state?.cart?.cartItems)
   const totalQuanty = useSelector((state)=> state?.cart?.cartQuanty)
   const cartTotal = useSelector((state)=> state?.cart?.cartTotal)
@@ -28,6 +30,54 @@ const Cart = () => {
     
 
     console.log(quantity, "quantity")
+
+  }
+
+  const handleCheckout = (cartTotal) => {
+
+
+    if(cartTotal > 0) {
+      const getCartName = cartItems?.map((item, index) =>item?.attributes?.title )
+      const finalValue = cartTotal.toFixed(2)
+      const email = user?.email
+     var options = {
+       key: `rzp_test_6bWBwtjqDsuEzE`,
+       key_secret:`MWZ2tsotNP9h5q`,
+       amount: finalValue * 100,
+       currency:"INR",
+       name:"BOLTZ ELECTORIONICS",
+       description:"for testing purpose",
+       handler: function(response){
+ 
+         if(response.razorpay_payment_id){
+           console.log(response, "payment")
+           dispatch(remvoeAll())
+           CheckoutHelper(getCartName, cartTotal, email)
+         }
+        
+         
+ 
+       },
+       prefill: {
+         name:"Cristiano Ronaldo",
+         email:"ronaldkumar333@gmail.com",
+         contact:"6379622144"
+       },
+       notes:{
+         address:"Razorpay Corporate office"
+       },
+       theme: {
+         color:"#e33d30"
+       }
+     };
+     var pay = new window.Razorpay(options);
+     pay.open();
+    }
+    else{
+
+    }
+
+  
 
   }
 
@@ -119,7 +169,11 @@ const Cart = () => {
                     <img src={PAYMENT} alt="payment-type" />
                     <img src={PAYMENT_1} alt="payment-type" />
                 </div>
-                <button className="check-out">Checkout</button>
+                <button className="check-out" onClick={()=> handleCheckout(cartTotal)}>
+                  {
+                    cartTotal === 0 ? 'Shop Somthing' : "Place Order"
+                  }
+                </button>
 
             </div>
  

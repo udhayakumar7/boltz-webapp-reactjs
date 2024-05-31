@@ -25,7 +25,7 @@ const ProductList = () => {
   return (
     <div className='product_list'>
 
-      <div className='container mt-5'>
+      <div className='container braed_cctr '>
       <Breadcrumb className='custom-bread'>
       <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
       <Breadcrumb.Item active>

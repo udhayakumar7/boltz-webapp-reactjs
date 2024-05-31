@@ -11,6 +11,7 @@ import './App.css';
 import ProductView from './components/Product-view/ProductView';
 import Cart from './pages/cart/Cart';
 import ProductList from './pages/product-list/ProductList';
+import SearchResults from './pages/search-results/SearchResults';
 
 
 
@@ -36,6 +37,7 @@ const router = createBrowserRouter([
         { path : '/products/:id', element : <ProductDetail />}, 
         { path : '/products/360-view/:name', element : <ProductView />}, 
         { path : '/cart', element : <Cart />}, 
+        { path : '/search', element : <SearchResults />}, 
         { path : '*', element : <div>404 error</div>}, 
       ]
   }

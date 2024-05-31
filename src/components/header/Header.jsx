@@ -16,6 +16,7 @@ import { login, logout, selectUser } from "../../redux/authuserSlice";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../../firebase";
 import Dropdown from "react-bootstrap/Dropdown";
+import SearchBar from "../searchbar/SearchBar";
 
 const Header = () => {
   const [isscroll, setIsscroll] = useState(false);
@@ -90,14 +91,7 @@ const Header = () => {
         </NavLink>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
-          <Form className="d-flex me-auto w-30">
-            <Form.Control
-              type="search"
-              placeholder="Search"
-              className="me-2 custom_input"
-              aria-label="Search"
-            />
-          </Form>
+         <SearchBar />
           <Nav className=" my-2 my-lg-0 align-items-center">
             <NavLink to="/">Home</NavLink>
             <NavLink to="/products/wire-less" state={{ name: "fun" }}>
@@ -124,12 +118,13 @@ const Header = () => {
             {user?.email ? (
               <Dropdown title="Dropdown end">
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
+                  
                   <img
-                    src="https://cdn-icons-png.flaticon.com/512/168/168726.png"
+                    src={user?.photoURL ? user?.photoURL : "https://cdn-icons-png.flaticon.com/512/168/168726.png" }
                     alt=""
                   />
                 </Dropdown.Toggle>
-
+             
                 <Dropdown.Menu>
                   <Dropdown.Item>{(user?.email).split("@")[0]}</Dropdown.Item>
                   <Dropdown.Item onClick={handleLogoot}>Logout</Dropdown.Item>
