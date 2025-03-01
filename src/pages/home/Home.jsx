@@ -6,21 +6,23 @@ import Neckbands from '../../components/Neckbands/Neckbands'
 import Wired from '../../components/Wired/Wired'
 import AddBanner from '../../components/AddBanner/AddBanner'
 import Feature from '../../components/feature/Feature'
+import GridBanner from '../../components/AddBanner/GridBanner'
 
 const Home = () => {
   return (
     <>
     
     <Banner />
+    <Feature />
    
+    <GridBanner />
    
     <LastestProduts />
     <TrueWireless />
     
-    <AddBanner />
+    {/* <AddBanner /> */}
     <Neckbands />
     <Wired />
-    <Feature />
     </>
   )
 }

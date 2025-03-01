@@ -18,6 +18,16 @@ justify-content: center;
 gap: 20px;
 border-radius: 10px;
 
+@media screen and (max-width: 540px){
+   height: 150px;
+   /* display: block; */
+   padding: 16px;
+   text-align: center;
+   flex-direction: column;
+   gap: 10px;
+
+}
+
 @media screen and (min-width: 991px) and (max-width: 1380px){
    height: 150px;
    display: block;
@@ -27,7 +37,7 @@ border-radius: 10px;
 
 @media screen and (max-width:800px) {
 
-   height: 120px;
+   /* height: 120px; */
    margin-bottom: 10px;
    
 }
@@ -39,6 +49,10 @@ margin: 5px 0px;
 font-size: 20px;
 font-weight: 600;
 
+@media screen and (max-width: 540px){
+   font-size: 16px;
+}
+
 
 `
 const FeatureSubTitle = styled.h2 `
@@ -46,14 +60,18 @@ margin: 5px 0px;
 font-size: 16px;
 font-weight: 400;
 
+@media screen and (max-width: 540px){
+   font-size: 14px;
+}
+
 `
 
 const Feature = () => {
   return (
-    <div className='main_section'>
+    <div className='main_section features'>
     <Container>
         <Row>
-            <Col  lg={3} sm={6}>
+            <Col xs={6}  lg={3} sm={6}>
                <FeatureCard>
                  <div>
                     <LiaShippingFastSolid fontSize={32} />
@@ -66,7 +84,7 @@ const Feature = () => {
 
                </FeatureCard>
             </Col>
-            <Col lg={3} sm={6}>
+            <Col xs={6} lg={3} sm={6}>
                <FeatureCard>
                  <div>
                     <RiRefund2Line fontSize={32} />
@@ -79,7 +97,7 @@ const Feature = () => {
 
                </FeatureCard>
             </Col>
-            <Col lg={3} sm={6}>
+            <Col xs={6} lg={3} sm={6}>
                <FeatureCard>
                  <div>
                     <BiSupport fontSize={32} />
@@ -92,7 +110,7 @@ const Feature = () => {
 
                </FeatureCard>
             </Col>
-            <Col lg={3} sm={6}>
+            <Col xs={6} lg={3} sm={6}>
                <FeatureCard>
                  <div>
                     <HiOutlineCreditCard fontSize={32} />

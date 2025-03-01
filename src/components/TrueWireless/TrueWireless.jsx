@@ -5,6 +5,7 @@ import ProductCard from '../ProductCard/ProductCard'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { Link } from "react-router-dom";
 
 const TrueWireless = () => {
 
@@ -26,7 +27,11 @@ const TrueWireless = () => {
     return (
         <div className='main_section' id="true">
         <Container>
-        <h2 className='section_title'>True Wireless</h2>
+            <div className='new-section-title'>
+                  <h2 className='section_title'>True Wireless</h2>
+                   {getTwT?.length > 6 &&  <h6 className='m-0'> <Link to={'/products/wire-less'} >View all</Link> </h6>} 
+                  </div>
+        
   
         <Row className='flex-no-wrap'>
           {
@@ -34,7 +39,7 @@ const TrueWireless = () => {
   
               return(
                 
-               <Col xs={6} sm={6} lg={3}  key={item?.id} >
+               <Col xs={6} sm={4} lg={2}  key={item?.id} >
                 <ProductCard 
                dataImage = {item?.attributes?.image?.data?.attributes?.url} 
                title={item?.attributes?.title} 

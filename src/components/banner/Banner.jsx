@@ -113,7 +113,36 @@ const Button = styled.button`
     font-size: 14px;
     margin-top: 12px;
   }
+
+
+
 `;
+
+ const Arrow = styled.span `
+ 
+  display:  flex ;
+  height: 20px;
+  width: 20px;
+  align-items: center;
+  justify-content: center;
+ 
+  background-color: #73737379;
+  border-radius: 50%;
+
+  border: 1px solid transparent;
+
+  &:hover{
+    border: 1px solid #fff;
+  }
+
+  @media screen and (min-width: 991px) {
+    height: 40px;
+    width: 40px;
+  }
+  
+
+ 
+ `
 
 const Banner = () => {
   var settings = {
@@ -130,9 +159,9 @@ const Banner = () => {
   
   return (
     <div className="new_slider_section">
-      <Container>
+      <Container fluid>
         <Row>
-          <Col lg={9} style={{position: "relative"}}>
+          <Col lg={12} style={{position: "relative"}} className="p-0">
             <Slider ref={sliderRef} {...settings}>
               <div className="border_none">
                 <img
@@ -142,13 +171,13 @@ const Banner = () => {
               </div>
               <div className="border_none">
                 <img
-                  src="https://www.boat-lifestyle.com/cdn/shop/files/Airdopes_Supreme_Banner_WEB_1515c104-abee-4263-8e44-4511088592de_1600x.jpg?v=1712209151"
+                  src="https://www.boat-lifestyle.com/cdn/shop/files/web_47453a27-f192-43f9-9eb3-c398566a645a_1440x.png?v=1739988457"
                   alt="banner"
                 />
               </div>
               <div className="border_none">
                 <img
-                  src="https://www.boat-lifestyle.com/cdn/shop/files/RS_Banner_WEB_2_1440x.png?v=1707810457"
+                  src="https://www.boat-lifestyle.com/cdn/shop/files/ION_Banner_WEB_f2f301b9-04e1-41f9-b424-a024680e6acc_1600x.jpg?v=1727264228"
                   alt="banner"
                 />
               </div>
@@ -156,35 +185,17 @@ const Banner = () => {
             </Slider>
             <div className="custom-arrows">
               
-               
-              <IoChevronBackOutline className="arrow" onClick={() => sliderRef?.current?.slickPrev()} />
+              
+              
+              <Arrow><IoChevronBackOutline className="arrow" onClick={() => sliderRef?.current?.slickPrev()} /></Arrow>
+              <Arrow>
               <IoChevronForward className="arrow"  onClick={() => sliderRef?.current?.slickNext()}/>
+
+              </Arrow>
                 
               </div>
           </Col>
-          <Col lg={3} className="">
-            <div className="offers">
-              <div className="offer_1">
-                <div className="offercontent">
-                <h3>Early birds Offer<br /><span>Buds Gen 3</span></h3>
-                <p>Discount 20% on each item</p>
-                </div>
-                <div className="img_con">
-                  <img src={OFFER_1} alt="" />
-                </div>
 
-              </div>
-              <div className="offer_2">
-              <div className="offercontent">
-                <h3>New Smart Watch<br /><span>SMT-43 Pro</span></h3>
-                <p>Comming soon</p>
-                </div>
-                <div className="img_con">
-                  <img src={OFFER_2} alt="" />
-                </div>
-              </div>
-            </div>
-          </Col>
         </Row>
       </Container>
 
@@ -206,3 +217,29 @@ const Banner = () => {
 };
 
 export default Banner;
+
+
+
+{/* <Col lg={3} className="">
+<div className="offers">
+  <div className="offer_1">
+    <div className="offercontent">
+    <h3>Early birds Offer<br /><span>Buds Gen 3</span></h3>
+    <p>Discount 20% on each item</p>
+    </div>
+    <div className="img_con">
+      <img src={OFFER_1} alt="" />
+    </div>
+
+  </div>
+  <div className="offer_2">
+  <div className="offercontent">
+    <h3>New Smart Watch<br /><span>SMT-43 Pro</span></h3>
+    <p>Comming soon</p>
+    </div>
+    <div className="img_con">
+      <img src={OFFER_2} alt="" />
+    </div>
+  </div>
+</div>
+</Col> */}

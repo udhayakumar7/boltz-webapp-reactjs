@@ -22,9 +22,9 @@ const ProductCard = (props) => {
     const stars = [];
     for (let i = 1; i <= 5; i++) {
       if (i <= rattings) {
-        stars.push(<FaStar className='me-1' style={{fontSize:"15px", color:"#ffcc00",}}  />);
+        stars.push(<FaStar className='me-1' style={{fontSize:"12px", color:"#ffcc00",}}  />);
       } else {
-        stars.push(<FaRegStar className='ms-1' style={{fontSize:"15px", color:"#ffcc00"}} />);
+        stars.push(<FaRegStar className='' style={{fontSize:"12px", color:"#ffcc00"}} />);
       }
     }
     return stars;
@@ -85,10 +85,10 @@ const ProductCard = (props) => {
         <h2>{title}</h2>
         <p>₹ {price}.00</p>
         {/* <p>{(string).substring(0, 30) + '...'}</p> */}
-        <div className='mt-1 ratting_rev'>
+        {/* <div className='mt-1 ratting_rev'>
         {renderStars()}
         <span className='reviews_count'>{reviews} reviews</span>
-        </div>
+        </div> */}
         <button  className='add_cart_button' onClick={()=>gotoCart(item)}>Add to Cart</button>
         </div>
         

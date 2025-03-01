@@ -21,10 +21,10 @@ import { Offcanvas } from "react-bootstrap";
 
 const Header = () => {
   const [isscroll, setIsscroll] = useState(false);
-  const [show, setShow] = useState(false)
+  const [show, setShow] = useState(false);
 
-  const handleShow = ( ) => setShow(true)
-  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
 
   const totalQuanty = useSelector((state) => state?.cart?.cartQuanty);
 
@@ -91,10 +91,13 @@ const Header = () => {
     >
       <Container>
         <NavLink className="logo" to="/">
-          <AiFillThunderbolt />
+          {/* <AiFillThunderbolt /> */}
           <span>BOLTZ</span>
         </NavLink>
-        <Navbar.Toggle aria-controls="offcanvasNavbar-expand-lg"  onClick={handleShow}/>
+        <Navbar.Toggle
+          aria-controls="offcanvasNavbar-expand-lg"
+          onClick={handleShow}
+        />
 
         <Navbar.Offcanvas
           id="offcanvasNavbar-expand-lg"
@@ -103,70 +106,73 @@ const Header = () => {
           show={show}
           onHide={handleClose}
         >
-    <Offcanvas.Header closeButton>
-    <Offcanvas.Title id="offcanvasNavbarLabel-expand-lg">
-    <NavLink className="logo" to="/" onClick={handleClose}>
-          <AiFillThunderbolt />
-          <span>BOLTZ</span>
-        </NavLink>
-      
-</Offcanvas.Title>
-
-    </Offcanvas.Header>
-    <Offcanvas.Body> 
-
-    <SearchBar setShow={setShow} />
-          <Nav className=" my-2 my-lg-0 align-items-center">
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/products/wire-less"  onClick={handleClose}>
-              True Wirless
-            </NavLink>
-            <NavLink to="/products/neck-bands" onClick={handleClose}>Neck Bands</NavLink>
-            <NavLink to="/products/wired" onClick={handleClose}>Wired</NavLink>
-            {user?.email ? (
-              <NavLink className={"user_acc"} to="/cart" onClick={handleClose}>
-                <RiShoppingCartFill
-                  style={{ fontSize: "18px,", margin: "0px 4px" }}
-                />
-                Cart
-                <span className="cart_badge">
-                  {totalQuanty > 10 ? "" : totalQuanty}
-                </span>
+          <Offcanvas.Header closeButton>
+            <Offcanvas.Title id="offcanvasNavbarLabel-expand-lg">
+              <NavLink className="logo" to="/" onClick={handleClose}>
+                {/* <AiFillThunderbolt /> */}
+                <span>BOLTZ</span>
               </NavLink>
-            ) : (
-              ""
-            )}
-
-            {/* <NavLink className={"user_acc"} to="/cart"><FaUserLarge style={{fontSize:"16px,",margin:"0px 7px"}}  />Kumar</NavLink> */}
-
-            {user?.email ? (
-              <Dropdown title="Dropdown end">
-                <Dropdown.Toggle variant="success" id="dropdown-basic">
-                  
-                  <img
-                    src={user?.photoURL ? user?.photoURL : "https://cdn-icons-png.flaticon.com/512/168/168726.png" }
-                    alt=""
+            </Offcanvas.Title>
+          </Offcanvas.Header>
+          <Offcanvas.Body>
+            <SearchBar setShow={setShow} />
+            <Nav className=" my-2 my-lg-0 align-items-center">
+              <NavLink to="/">Home</NavLink>
+              <NavLink to="/products/wire-less" onClick={handleClose}>
+                True Wirless
+              </NavLink>
+              <NavLink to="/products/neck-bands" onClick={handleClose}>
+                Neck Bands
+              </NavLink>
+              <NavLink to="/products/wired" onClick={handleClose}>
+                Wired
+              </NavLink>
+              {user?.email ? (
+                <NavLink
+                  className={"user_acc"}
+                  to="/cart"
+                  onClick={handleClose}
+                >
+                  <RiShoppingCartFill
+                    style={{ fontSize: "18px,", margin: "0px 4px" }}
                   />
-                </Dropdown.Toggle>
-             
-                <Dropdown.Menu>
-                  <Dropdown.Item>{(user?.email).split("@")[0]}</Dropdown.Item>
-                  <Dropdown.Item onClick={handleLogoot}>Logout</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-            ) : (
-              <button onClick={handleOpenModal} className={"login_button"}>
-                Login
-              </button>
-            )}
-          </Nav>
-    </Offcanvas.Body>
+                  Cart
+                  <span className="cart_badge">
+                    {totalQuanty > 10 ? "" : totalQuanty}
+                  </span>
+                </NavLink>
+              ) : (
+                ""
+              )}
 
+              {/* <NavLink className={"user_acc"} to="/cart"><FaUserLarge style={{fontSize:"16px,",margin:"0px 7px"}}  />Kumar</NavLink> */}
 
+              {user?.email ? (
+                <Dropdown title="Dropdown end">
+                  <Dropdown.Toggle variant="success" id="dropdown-basic">
+                    <img
+                      src={
+                        user?.photoURL
+                          ? user?.photoURL
+                          : "https://cdn-icons-png.flaticon.com/512/168/168726.png"
+                      }
+                      alt=""
+                    />
+                  </Dropdown.Toggle>
 
+                  <Dropdown.Menu>
+                    <Dropdown.Item>{(user?.email).split("@")[0]}</Dropdown.Item>
+                    <Dropdown.Item onClick={handleLogoot}>Logout</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              ) : (
+                <button onClick={handleOpenModal} className={"login_button"}>
+                  Login
+                </button>
+              )}
+            </Nav>
+          </Offcanvas.Body>
         </Navbar.Offcanvas>
-
-       
       </Container>
 
       <Login />
