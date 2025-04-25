@@ -1533,7 +1533,22 @@ margin: 0px;
 .row-image.one{
   margin-bottom: 30px;
 }
-
+.newtoast{
+  width: 100%;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  z-index: 99;
+}
+.newtoast .toast-header{
+  padding: 20px 40px;
+  font-size: 16px;
+  justify-content: space-between;
+  border-top: 2px solid #f63e31;
+  border-left: 2px solid #f63e31;
+  color: #000;
+  font-weight: 600;
+} 
 @media screen and (min-width: 1000px) and (max-width: 1290px) {
   .flex-no-wrap .col-lg-2{
       width: 20% !important;
@@ -1574,6 +1589,10 @@ margin: 0px;
 }
 
 @media screen and (max-width: 991px) {
+  .newtoast .toast-header{
+    font-size: 10px;
+    padding: 12px;
+  }
 
   .image-layer.two .special-feature{
     padding: 20px;

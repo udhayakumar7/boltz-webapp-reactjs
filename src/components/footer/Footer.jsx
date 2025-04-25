@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Col from 'react-bootstrap/esm/Col'
 import Container from 'react-bootstrap/esm/Container'
 import Row from 'react-bootstrap/esm/Row'
@@ -9,6 +9,7 @@ import { FaFacebook } from "react-icons/fa";
 import { IoLogoInstagram } from "react-icons/io5";
 import { FaXTwitter } from "react-icons/fa6";
 import { Link } from 'react-router-dom'
+import Toast from 'react-bootstrap/Toast';
 const FooterSection = styled.div `
 width: 100%;
 height: 100%;
@@ -17,8 +18,13 @@ background: #1c1c1c;
 `
 
 const Footer = () => {
+  const [showA, setShowA] = useState(true);
+  const toggleShowA = () => setShowA(!showA);
   return (
     <FooterSection >
+          <Toast className='newtoast' show={showA} onClose={toggleShowA}>
+                <Toast.Header> This app's backend is hosted on a free-tier platform, so data retrieval might take a little longer at times. Thanks for your patience!</Toast.Header>
+          </Toast>
       <Container>
         <Row>
           <Col lg={3}>
